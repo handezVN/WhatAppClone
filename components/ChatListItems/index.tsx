@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./style";
-import { Image, Text, View } from "react-native";
+import { Image, Text, View , TouchableWithoutFeedback} from "react-native";
 import { ChatRoom } from "../../types";
+import {useNavigation} from '@react-navigation/native'
 export type ChartListItemProps = {
   chatRoom: ChatRoom;
 };
@@ -10,7 +11,18 @@ const ChartListItem = (props: ChartListItemProps) => {
   const { chatRoom } = props;
   const user = chatRoom.users[1];
   var day=dateFormat(new Date(chatRoom.lastMessage.createdAt), "dd/mm/yyyy");
+
+  const navigation = useNavigation();
+
+  const onclick = () =>{
+    navigation.navigate('ChatRoom',{
+              id: chatRoom.id,
+              name: user.name,
+            
+            });
+  }
   return (
+    <TouchableWithoutFeedback onPress={onclick}>
     <View style={styles.container}>
       <View style={styles.leftcontainer}>
         <Image
@@ -30,6 +42,7 @@ const ChartListItem = (props: ChartListItemProps) => {
       </Text>
       
     </View>
+    </TouchableWithoutFeedback>
   );
 };
 
