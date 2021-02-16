@@ -5,7 +5,7 @@ import * as React from 'react';
 import { createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
+import ChatsScreen from '../screens/ChatsScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import {  MainTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 import {Fontisto } from '@expo/vector-icons'
@@ -33,7 +33,7 @@ export default function BottomTabNavigator() {
          }}>
       <MainTab.Screen
         name="Camera"
-        component={TabOneNavigator}
+        component={ChatsScreen}
         options={{
           tabBarIcon: ({ color }) => <Fontisto name="camera" color={color} size={18} />,
           tabBarLabel: () => null
@@ -41,7 +41,7 @@ export default function BottomTabNavigator() {
       />
       <MainTab.Screen
         name="Chats"
-        component={TabTwoNavigator}
+        component={ChatsScreen}
    
       />
       <MainTab.Screen
